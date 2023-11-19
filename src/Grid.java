@@ -17,4 +17,32 @@ public class Grid {
             }
         }
     }
+
+    public int[][] getGrid(){
+        return this.grid;
+    }
+
+    public int getColumnCount(){
+        return this.columns;
+    }
+
+    public int placePiece(int column, GridPosition piece){
+        if(column < 0 || column >= this.columns){
+            throw new Error("Invalid column");
+        }
+        if(piece == GridPosition.EMPTY){
+            throw new Error("Invalid piece");
+        }
+
+        //Place piece in the lowest empty row
+        for(int row = this.rows - 1; row >= 0; row--){
+            if(this.grid[row][column] == GridPosition.EMPTY.ordinal()){
+                this.grid[row][column] = piece.ordinal();
+                return row;
+            }
+        }
+        return -1;
+    }
+
+
 }
