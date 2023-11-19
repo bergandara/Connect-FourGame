@@ -44,5 +44,21 @@ public class Grid {
         return -1;
     }
 
+    //checkWin function
+    public boolean checkWin(int connectN, int row, int col, GridPosition piece){
+        //Check Horizontal
+        int count = 0;
+        for(int c = 0; c < this.columns; c++){
+            if(this.grid[row][c] == piece.ordinal()){
+                count++;
+            }else{
+                count = 0;
+            }
+            if(count == connectN){
+                return true;
+            }
+        }
 
+
+    }
 }
