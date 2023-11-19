@@ -59,6 +59,44 @@ public class Grid {
             }
         }
 
+        //Check vertical
+        count = 0;
+        for(int r = 0; r < this.rows; r++){
+            if(this.grid[r][col] == piece.ordinal()){
+                count++;
+            }else {
+                count = 0;
+            }if(count == connectN){
+                return true;
+            }
+        }
+        //Check diagonal
+        count = 0;
+        for(int r = 0; r < this.rows; r++){
+            int c = row + col - r;  //row + col = r + c, for a diagonal
+            if(c >= 0 && c < this.columns && this.grid[r][c] == piece.ordinal()){
+                count++;
+            }else {
+                count = 0;
+            }
+            if(count == connectN){
+                return true;
+            }
+        }
 
+        //Check anti-diagonal
+        count = 0;
+        for(int r = 0; r < this.rows; r++){
+            int c = col - row + r; //row - col = r - c, for anti-diagonal
+            if(c >= 0 && c < this.columns && this.grid[r][c] == piece.ordinal()){
+                count++;
+            }else{
+                count = 0;
+            }
+            if(count == connectN){
+                return true;
+            }
+        }
+        return false;
     }
 }
