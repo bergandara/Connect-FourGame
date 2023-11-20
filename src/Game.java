@@ -71,4 +71,17 @@ public class Game {
         }
     }
 
+    public void play(){
+        int maxScore = 0;
+        Player winner = null;
+        while(maxScore < this.targetScore){
+            winner = playRound();
+            System.out.println(winner.getName() + " won the round");
+            maxScore = Math.max(this.score.get(winner.getName()), maxScore);
+
+            this.grid.initGrid();   //reset grid
+        }
+        System.out.println(winner.getName() + " won the game");
+    }
+
 }
